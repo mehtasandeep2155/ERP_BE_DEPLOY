@@ -18,17 +18,17 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const dotenv = __webpack_require__(1);
 const core_1 = __webpack_require__(2);
 const api_main_service_module_1 = __webpack_require__(3);
-__webpack_require__(9);
+__webpack_require__(8);
 const swagger_1 = __webpack_require__(6);
-const swagger_2 = __webpack_require__(10);
+const swagger_2 = __webpack_require__(9);
 (__webpack_require__(1).config)();
 dotenv.config();
 (() => __awaiter(void 0, void 0, void 0, function* () {
     const app = yield core_1.NestFactory.create(api_main_service_module_1.ApiMainServiceModule);
-    swagger_1.SwaggerModule.setup('api/v1', app, (0, swagger_2.createDocument)(app));
+    swagger_1.SwaggerModule.setup('main/api', app, (0, swagger_2.createDocument)(app));
     yield app.startAllMicroservices();
-    yield app.listen(process.env.MODULE_PORT || 3400);
-    console.info('SERVER IS RUNNING ON PORT', process.env.MODULE_PORT || 3400);
+    yield app.listen(4000);
+    console.info('SERVER IS RUNNING ON PORT', 4000);
 }))();
 
 
@@ -60,19 +60,11 @@ exports.ApiMainServiceModule = void 0;
 const common_1 = __webpack_require__(4);
 const api_main_service_controller_1 = __webpack_require__(5);
 const api_main_service_service_1 = __webpack_require__(7);
-const redisStore = (__webpack_require__(8).redisStore);
 let ApiMainServiceModule = class ApiMainServiceModule {
 };
 ApiMainServiceModule = __decorate([
     (0, common_1.Module)({
-        imports: [
-            common_1.CacheModule.register({
-                isGlobal: true,
-                store: redisStore,
-                host: 'localhost',
-                port: 6379,
-            }),
-        ],
+        imports: [],
         controllers: [api_main_service_controller_1.ApiMainServiceController],
         providers: [api_main_service_service_1.ApiMainServiceService],
     })
@@ -114,8 +106,6 @@ let ApiMainServiceController = class ApiMainServiceController {
     }
 };
 __decorate([
-    (0, common_1.UseInterceptors)(common_1.CacheInterceptor),
-    (0, common_1.CacheTTL)(30),
     (0, common_1.Get)(),
     openapi.ApiResponse({ status: 200, type: [Object] }),
     __metadata("design:type", Function),
@@ -168,23 +158,17 @@ exports.ApiMainServiceService = ApiMainServiceService;
 /* 8 */
 /***/ ((module) => {
 
-module.exports = require("cache-manager-redis-store");
-
-/***/ }),
-/* 9 */
-/***/ ((module) => {
-
 module.exports = require("reflect-metadata");
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createDocument = void 0;
 const swagger_1 = __webpack_require__(6);
-const swagger_config_1 = __webpack_require__(11);
+const swagger_config_1 = __webpack_require__(10);
 function createDocument(app) {
     const builder = new swagger_1.DocumentBuilder()
         .addSecurity('basic', {
@@ -210,7 +194,7 @@ exports.createDocument = createDocument;
 
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ ((__unused_webpack_module, exports) => {
 
 
