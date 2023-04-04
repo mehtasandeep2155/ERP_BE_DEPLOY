@@ -18,13 +18,13 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const dotenv = __webpack_require__(1);
 const core_1 = __webpack_require__(2);
 const api_main_service_module_1 = __webpack_require__(3);
-__webpack_require__(30);
+__webpack_require__(56);
 const swagger_1 = __webpack_require__(6);
-const swagger_2 = __webpack_require__(31);
+const swagger_2 = __webpack_require__(57);
 (__webpack_require__(1).config)();
 dotenv.config();
 (() => __awaiter(void 0, void 0, void 0, function* () {
-    const app = yield core_1.NestFactory.create(api_main_service_module_1.ApiMainServiceModule);
+    const app = yield core_1.NestFactory.create(api_main_service_module_1.ApiMainServiceModule, { cors: true });
     swagger_1.SwaggerModule.setup('main/api', app, (0, swagger_2.createDocument)(app));
     yield app.startAllMicroservices();
     yield app.listen(4000);
@@ -64,23 +64,23 @@ const user_service_1 = __webpack_require__(8);
 const auth_service_1 = __webpack_require__(14);
 const prisma_service_1 = __webpack_require__(10);
 const mailer_1 = __webpack_require__(18);
-const jwt_1 = __webpack_require__(29);
+const jwt_1 = __webpack_require__(55);
 const config_1 = __webpack_require__(15);
 const company_service_1 = __webpack_require__(26);
 const subcompany_service_1 = __webpack_require__(25);
-const color_service_1 = __webpack_require__(33);
-const product_service_1 = __webpack_require__(48);
-const productdimension_service_1 = __webpack_require__(42);
-const producttype_service_1 = __webpack_require__(45);
-const productvariant_service_1 = __webpack_require__(43);
-const purchaseorder_service_1 = __webpack_require__(44);
-const rate_service_1 = __webpack_require__(46);
-const uom_service_1 = __webpack_require__(47);
-const stock_service_1 = __webpack_require__(49);
-const stockactions_service_1 = __webpack_require__(50);
-const inventory_service_1 = __webpack_require__(51);
-const inventoryview_service_1 = __webpack_require__(52);
-const customer_service_1 = __webpack_require__(58);
+const color_service_1 = __webpack_require__(29);
+const product_service_1 = __webpack_require__(44);
+const productdimension_service_1 = __webpack_require__(38);
+const producttype_service_1 = __webpack_require__(41);
+const productvariant_service_1 = __webpack_require__(39);
+const purchaseorder_service_1 = __webpack_require__(40);
+const rate_service_1 = __webpack_require__(42);
+const uom_service_1 = __webpack_require__(43);
+const stock_service_1 = __webpack_require__(51);
+const stockactions_service_1 = __webpack_require__(52);
+const inventory_service_1 = __webpack_require__(50);
+const inventoryview_service_1 = __webpack_require__(49);
+const customer_service_1 = __webpack_require__(54);
 let ApiMainServiceModule = class ApiMainServiceModule {
 };
 ApiMainServiceModule = __decorate([
@@ -178,32 +178,32 @@ const subcompany_service_1 = __webpack_require__(25);
 const company_service_1 = __webpack_require__(26);
 const subcompany_dto_1 = __webpack_require__(27);
 const company_dto_1 = __webpack_require__(28);
-const color_service_1 = __webpack_require__(33);
-const color_dto_1 = __webpack_require__(34);
-const product_dto_1 = __webpack_require__(35);
-const product_dimension_dto_1 = __webpack_require__(36);
-const product_type_dto_1 = __webpack_require__(37);
-const productvariant_dto_1 = __webpack_require__(38);
-const purchaseorder_dto_1 = __webpack_require__(39);
-const rate_dto_1 = __webpack_require__(40);
-const uom_dto_1 = __webpack_require__(41);
-const productdimension_service_1 = __webpack_require__(42);
-const productvariant_service_1 = __webpack_require__(43);
-const purchaseorder_service_1 = __webpack_require__(44);
-const producttype_service_1 = __webpack_require__(45);
-const rate_service_1 = __webpack_require__(46);
-const uom_service_1 = __webpack_require__(47);
-const product_service_1 = __webpack_require__(48);
-const inventory_dto_1 = __webpack_require__(53);
-const inventoryview_dto_1 = __webpack_require__(54);
-const stock_dto_1 = __webpack_require__(55);
-const stockactions_dto_1 = __webpack_require__(56);
-const inventoryview_service_1 = __webpack_require__(52);
-const inventory_service_1 = __webpack_require__(51);
-const stock_service_1 = __webpack_require__(49);
-const stockactions_service_1 = __webpack_require__(50);
-const customer_dto_1 = __webpack_require__(57);
-const customer_service_1 = __webpack_require__(58);
+const color_service_1 = __webpack_require__(29);
+const color_dto_1 = __webpack_require__(30);
+const product_dto_1 = __webpack_require__(31);
+const product_dimension_dto_1 = __webpack_require__(32);
+const product_type_dto_1 = __webpack_require__(33);
+const productvariant_dto_1 = __webpack_require__(34);
+const purchaseorder_dto_1 = __webpack_require__(35);
+const rate_dto_1 = __webpack_require__(36);
+const uom_dto_1 = __webpack_require__(37);
+const productdimension_service_1 = __webpack_require__(38);
+const productvariant_service_1 = __webpack_require__(39);
+const purchaseorder_service_1 = __webpack_require__(40);
+const producttype_service_1 = __webpack_require__(41);
+const rate_service_1 = __webpack_require__(42);
+const uom_service_1 = __webpack_require__(43);
+const product_service_1 = __webpack_require__(44);
+const inventory_dto_1 = __webpack_require__(45);
+const inventoryview_dto_1 = __webpack_require__(47);
+const stock_dto_1 = __webpack_require__(48);
+const stockactions_dto_1 = __webpack_require__(46);
+const inventoryview_service_1 = __webpack_require__(49);
+const inventory_service_1 = __webpack_require__(50);
+const stock_service_1 = __webpack_require__(51);
+const stockactions_service_1 = __webpack_require__(52);
+const customer_dto_1 = __webpack_require__(53);
+const customer_service_1 = __webpack_require__(54);
 let ApiMainServiceController = class ApiMainServiceController {
     constructor(apiMainServiceService, userService, authService, subcompanyService, companyService, colorService, productdimensionService, productvariantService, purchaseorderService, producttypeService, rateService, uomService, productService, stockService, stockActionsService, inventoryviewService, inventoryService, customerService) {
         this.apiMainServiceService = apiMainServiceService;
@@ -798,7 +798,7 @@ __decorate([
 ], ApiMainServiceController.prototype, "deleteColorById", null);
 __decorate([
     (0, common_1.Get)("product/dimension"),
-    openapi.ApiResponse({ status: 200, type: Object }),
+    openapi.ApiResponse({ status: 200, type: [Object] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
@@ -878,7 +878,7 @@ __decorate([
 ], ApiMainServiceController.prototype, "deleteTypeById", null);
 __decorate([
     (0, common_1.Get)("product/variant"),
-    openapi.ApiResponse({ status: 200, type: Object }),
+    openapi.ApiResponse({ status: 200, type: [Object] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
@@ -918,7 +918,7 @@ __decorate([
 ], ApiMainServiceController.prototype, "deleteProductVariant", null);
 __decorate([
     (0, common_1.Get)("product/purchase-order"),
-    openapi.ApiResponse({ status: 200, type: Object }),
+    openapi.ApiResponse({ status: 200, type: [Object] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
@@ -967,14 +967,14 @@ __decorate([
 ], ApiMainServiceController.prototype, "deletePurchaseOrder", null);
 __decorate([
     (0, common_1.Get)("product/rate"),
-    openapi.ApiResponse({ status: 200, type: Object }),
+    openapi.ApiResponse({ status: 200, type: [Object] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], ApiMainServiceController.prototype, "getRate", null);
 __decorate([
     (0, common_1.Get)("product/rate/:id"),
-    openapi.ApiResponse({ status: 200, type: Object }),
+    openapi.ApiResponse({ status: 200 }),
     __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -1047,7 +1047,7 @@ __decorate([
 ], ApiMainServiceController.prototype, "deleteById", null);
 __decorate([
     (0, common_1.Get)("product/product"),
-    openapi.ApiResponse({ status: 200, type: Object }),
+    openapi.ApiResponse({ status: 200, type: [Object] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
@@ -1087,7 +1087,7 @@ __decorate([
 ], ApiMainServiceController.prototype, "deleteProduct", null);
 __decorate([
     (0, common_1.Get)("inventory/view"),
-    openapi.ApiResponse({ status: 200, type: Object }),
+    openapi.ApiResponse({ status: 200, type: [Object] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
@@ -1127,7 +1127,7 @@ __decorate([
 ], ApiMainServiceController.prototype, "deleteView", null);
 __decorate([
     (0, common_1.Get)("inventory/stock"),
-    openapi.ApiResponse({ status: 200, type: Object }),
+    openapi.ApiResponse({ status: 200, type: [Object] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
@@ -1207,7 +1207,7 @@ __decorate([
 ], ApiMainServiceController.prototype, "deleteActions", null);
 __decorate([
     (0, common_1.Get)("inventory/inventory"),
-    openapi.ApiResponse({ status: 200, type: Object }),
+    openapi.ApiResponse({ status: 200, type: [Object] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
@@ -1238,7 +1238,7 @@ __decorate([
 ], ApiMainServiceController.prototype, "deleteInventory", null);
 __decorate([
     (0, common_1.Get)("customer/customer"),
-    openapi.ApiResponse({ status: 200, type: Object }),
+    openapi.ApiResponse({ status: 200, type: [Object] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
@@ -2411,65 +2411,6 @@ exports.CompanyDto = CompanyDto;
 
 /***/ }),
 /* 29 */
-/***/ ((module) => {
-
-module.exports = require("@nestjs/jwt");
-
-/***/ }),
-/* 30 */
-/***/ ((module) => {
-
-module.exports = require("reflect-metadata");
-
-/***/ }),
-/* 31 */
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.createDocument = void 0;
-const swagger_1 = __webpack_require__(6);
-const swagger_config_1 = __webpack_require__(32);
-function createDocument(app) {
-    const builder = new swagger_1.DocumentBuilder()
-        .addSecurity('basic', {
-        type: 'http',
-        scheme: 'basic',
-    })
-        .setTitle(swagger_config_1.SWAGGER_CONFIG.title)
-        .setDescription(swagger_config_1.SWAGGER_CONFIG.description)
-        .setContact(process.env.SWAGGER_CONTACT_NAME, process.env.SWAGGER_CONTACT_URL, process.env.SWAGGER_CONTACT_EMAIL)
-        .setExternalDoc('Project on Github', process.env.SWAGGER_PROJECT_DETAILS)
-        .addBearerAuth({
-        type: 'http',
-        scheme: 'bearer',
-        bearerFormat: 'JWT',
-    }, 'access-token')
-        .setVersion(swagger_config_1.SWAGGER_CONFIG.version)
-        .addServer(process.env.SWAGGER_LOCAL_ENDPOINT, 'local url')
-        .addServer(process.env.SWAGGER_STAG_ENDPOINT, 'stag url');
-    const options = builder.build();
-    return swagger_1.SwaggerModule.createDocument(app, options);
-}
-exports.createDocument = createDocument;
-
-
-/***/ }),
-/* 32 */
-/***/ ((__unused_webpack_module, exports) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.SWAGGER_CONFIG = void 0;
-exports.SWAGGER_CONFIG = {
-    title: 'ERP-Nestjs-API',
-    description: 'Bitontree-ERP',
-    version: '1.0',
-};
-
-
-/***/ }),
-/* 33 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2526,7 +2467,7 @@ exports.ColorService = ColorService;
 
 
 /***/ }),
-/* 34 */
+/* 30 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2556,7 +2497,7 @@ exports.ColorDto = ColorDto;
 
 
 /***/ }),
-/* 35 */
+/* 31 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2605,7 +2546,7 @@ exports.ProductDto = ProductDto;
 
 
 /***/ }),
-/* 36 */
+/* 32 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2642,7 +2583,7 @@ exports.ProductDimensionDto = ProductDimensionDto;
 
 
 /***/ }),
-/* 37 */
+/* 33 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2680,7 +2621,7 @@ exports.ProductTypeDto = ProductTypeDto;
 
 
 /***/ }),
-/* 38 */
+/* 34 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2738,7 +2679,7 @@ exports.ProductVariantDto = ProductVariantDto;
 
 
 /***/ }),
-/* 39 */
+/* 35 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2835,7 +2776,7 @@ exports.VerifyPurchaseOrderDto = VerifyPurchaseOrderDto;
 
 
 /***/ }),
-/* 40 */
+/* 36 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2884,7 +2825,7 @@ exports.RateDto = RateDto;
 
 
 /***/ }),
-/* 41 */
+/* 37 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2914,7 +2855,7 @@ exports.UomDto = UomDto;
 
 
 /***/ }),
-/* 42 */
+/* 38 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -3013,7 +2954,7 @@ exports.ProductdimensionService = ProductdimensionService;
 
 
 /***/ }),
-/* 43 */
+/* 39 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -3117,7 +3058,7 @@ exports.ProductvariantService = ProductvariantService;
 
 
 /***/ }),
-/* 44 */
+/* 40 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -3445,7 +3386,7 @@ exports.PurchaseorderService = PurchaseorderService;
 
 
 /***/ }),
-/* 45 */
+/* 41 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -3546,7 +3487,7 @@ exports.ProducttypeService = ProducttypeService;
 
 
 /***/ }),
-/* 46 */
+/* 42 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -3713,7 +3654,7 @@ exports.RateService = RateService;
 
 
 /***/ }),
-/* 47 */
+/* 43 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -3770,7 +3711,7 @@ exports.UomService = UomService;
 
 
 /***/ }),
-/* 48 */
+/* 44 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -3958,6 +3899,236 @@ exports.ProductService = ProductService;
 
 
 /***/ }),
+/* 45 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.InventoryDto = exports.ChangedMainStock = void 0;
+const openapi = __webpack_require__(6);
+const common_decorator_1 = __webpack_require__(22);
+class ChangedMainStock {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { increaseInStock: { required: true, type: () => [(__webpack_require__(46).ChangedStock)] }, decreaseInStock: { required: true, type: () => [(__webpack_require__(46).ChangedStock)] } };
+    }
+}
+__decorate([
+    (0, common_decorator_1.ArrayOptionalValidator)(),
+    __metadata("design:type", Array)
+], ChangedMainStock.prototype, "increaseInStock", void 0);
+__decorate([
+    (0, common_decorator_1.ArrayOptionalValidator)(),
+    __metadata("design:type", Array)
+], ChangedMainStock.prototype, "decreaseInStock", void 0);
+exports.ChangedMainStock = ChangedMainStock;
+class InventoryDto {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { inventory_view: { required: true, type: () => [String] }, rawStockChange: { required: true, type: () => [(__webpack_require__(45).ChangedMainStock)] }, garbageStockChange: { required: true, type: () => [(__webpack_require__(45).ChangedMainStock)] }, finishedStockChange: { required: true, type: () => [(__webpack_require__(45).ChangedMainStock)] } };
+    }
+}
+__decorate([
+    (0, common_decorator_1.ArrayValidator)(),
+    __metadata("design:type", Array)
+], InventoryDto.prototype, "inventory_view", void 0);
+__decorate([
+    (0, common_decorator_1.ArrayOptionalValidator)(),
+    __metadata("design:type", Array)
+], InventoryDto.prototype, "rawStockChange", void 0);
+__decorate([
+    (0, common_decorator_1.ArrayOptionalValidator)(),
+    __metadata("design:type", Array)
+], InventoryDto.prototype, "garbageStockChange", void 0);
+__decorate([
+    (0, common_decorator_1.ArrayOptionalValidator)(),
+    __metadata("design:type", Array)
+], InventoryDto.prototype, "finishedStockChange", void 0);
+exports.InventoryDto = InventoryDto;
+
+
+/***/ }),
+/* 46 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.StockActionsDto = exports.ChangedStock = void 0;
+const openapi = __webpack_require__(6);
+const swagger_1 = __webpack_require__(6);
+const client_1 = __webpack_require__(12);
+const class_validator_1 = __webpack_require__(21);
+const common_decorator_1 = __webpack_require__(22);
+class ChangedStock {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { weight: { required: true, type: () => Number }, weightUom: { required: true, type: () => String }, count: { required: true, type: () => Number } };
+    }
+}
+__decorate([
+    (0, common_decorator_1.NumberOptionalValidator)(),
+    __metadata("design:type", Number)
+], ChangedStock.prototype, "weight", void 0);
+__decorate([
+    (0, common_decorator_1.StringOptionalValidator)(),
+    __metadata("design:type", String)
+], ChangedStock.prototype, "weightUom", void 0);
+__decorate([
+    (0, common_decorator_1.NumberValidator)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", Number)
+], ChangedStock.prototype, "count", void 0);
+exports.ChangedStock = ChangedStock;
+class StockActionsDto {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { type: { required: true, type: () => Object }, increaseInStock: { required: true, type: () => [(__webpack_require__(46).ChangedStock)] }, decreaseInStock: { required: true, type: () => [(__webpack_require__(46).ChangedStock)] } };
+    }
+}
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, class_validator_1.IsEnum)(client_1.InventoryType),
+    __metadata("design:type", String)
+], StockActionsDto.prototype, "type", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsArray)(),
+    __metadata("design:type", Array)
+], StockActionsDto.prototype, "increaseInStock", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsArray)(),
+    __metadata("design:type", Array)
+], StockActionsDto.prototype, "decreaseInStock", void 0);
+exports.StockActionsDto = StockActionsDto;
+
+
+/***/ }),
+/* 47 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.InventoryViewDto = void 0;
+const openapi = __webpack_require__(6);
+const swagger_1 = __webpack_require__(6);
+const client_1 = __webpack_require__(12);
+const class_validator_1 = __webpack_require__(21);
+const common_decorator_1 = __webpack_require__(22);
+class InventoryViewDto {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { type: { required: true, type: () => Object }, variantId: { required: true, type: () => String }, colorId: { required: true, type: () => String }, coatingId: { required: true, type: () => String }, dimensionId: { required: true, type: () => String }, weight: { required: true, type: () => Number }, weightUomId: { required: true, type: () => String }, count: { required: true, type: () => Number } };
+    }
+}
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, class_validator_1.IsEnum)(client_1.InventoryType),
+    __metadata("design:type", String)
+], InventoryViewDto.prototype, "type", void 0);
+__decorate([
+    (0, common_decorator_1.StringValidator)(),
+    __metadata("design:type", String)
+], InventoryViewDto.prototype, "variantId", void 0);
+__decorate([
+    (0, common_decorator_1.StringValidator)(),
+    __metadata("design:type", String)
+], InventoryViewDto.prototype, "colorId", void 0);
+__decorate([
+    (0, common_decorator_1.StringOptionalValidator)(),
+    __metadata("design:type", String)
+], InventoryViewDto.prototype, "coatingId", void 0);
+__decorate([
+    (0, common_decorator_1.StringValidator)(),
+    __metadata("design:type", String)
+], InventoryViewDto.prototype, "dimensionId", void 0);
+__decorate([
+    (0, common_decorator_1.NumberOptionalValidator)(),
+    __metadata("design:type", Number)
+], InventoryViewDto.prototype, "weight", void 0);
+__decorate([
+    (0, common_decorator_1.StringOptionalValidator)(),
+    __metadata("design:type", String)
+], InventoryViewDto.prototype, "weightUomId", void 0);
+__decorate([
+    (0, common_decorator_1.NumberValidator)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", Number)
+], InventoryViewDto.prototype, "count", void 0);
+exports.InventoryViewDto = InventoryViewDto;
+
+
+/***/ }),
+/* 48 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.StockDto = void 0;
+const openapi = __webpack_require__(6);
+const client_1 = __webpack_require__(12);
+const class_validator_1 = __webpack_require__(21);
+const common_decorator_1 = __webpack_require__(22);
+class StockDto {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { type: { required: true, type: () => Object }, weight: { required: true, type: () => Number }, weightUomId: { required: true, type: () => String }, count: { required: true, type: () => Number } };
+    }
+}
+__decorate([
+    (0, common_decorator_1.StringValidator)(),
+    (0, class_validator_1.IsEnum)(client_1.InventoryType),
+    __metadata("design:type", String)
+], StockDto.prototype, "type", void 0);
+__decorate([
+    (0, common_decorator_1.NumberOptionalValidator)(),
+    __metadata("design:type", Number)
+], StockDto.prototype, "weight", void 0);
+__decorate([
+    (0, common_decorator_1.StringOptionalValidator)(),
+    __metadata("design:type", String)
+], StockDto.prototype, "weightUomId", void 0);
+__decorate([
+    (0, common_decorator_1.NumberValidator)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", Number)
+], StockDto.prototype, "count", void 0);
+exports.StockDto = StockDto;
+
+
+/***/ }),
 /* 49 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -3981,24 +4152,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.StockService = void 0;
+exports.InventoryviewService = void 0;
 const common_1 = __webpack_require__(4);
 const crud_service_1 = __webpack_require__(9);
 const error_functions_1 = __webpack_require__(13);
 const prisma_service_1 = __webpack_require__(10);
-let StockService = class StockService extends crud_service_1.CrudService {
+let InventoryviewService = class InventoryviewService extends crud_service_1.CrudService {
     constructor(prisma) {
-        super(prisma.stock);
+        super(prisma.inventory_view);
         this.prisma = prisma;
     }
-    getStock() {
+    getView() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                return yield this.prisma.stock.findMany({
+                return this.prisma.inventory_view.findMany({
                     orderBy: {
                         updatedAt: 'desc',
                     },
                     include: {
+                        coating: true,
+                        color: true,
+                        dimension: true,
+                        variant: true,
                         weightUom: true,
                     },
                 });
@@ -4008,14 +4183,18 @@ let StockService = class StockService extends crud_service_1.CrudService {
             }
         });
     }
-    getStockById(id) {
+    getViewById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                return yield this.prisma.stock.findUnique({
+                return this.prisma.inventory_view.findUnique({
                     where: {
                         id,
                     },
                     include: {
+                        coating: true,
+                        color: true,
+                        dimension: true,
+                        variant: true,
                         weightUom: true,
                     },
                 });
@@ -4025,13 +4204,17 @@ let StockService = class StockService extends crud_service_1.CrudService {
             }
         });
     }
-    createStock(dto) {
+    createView(dto) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { type, weight, count, weightUomId } = dto;
-                return yield this.prisma.stock.create({
+                const { type, coatingId, colorId, count, dimensionId, variantId, weight, weightUomId, } = dto;
+                return this.prisma.inventory_view.create({
                     data: {
                         type,
+                        variantId,
+                        coatingId,
+                        colorId,
+                        dimensionId,
                         weight,
                         count,
                         weightUomId,
@@ -4043,18 +4226,22 @@ let StockService = class StockService extends crud_service_1.CrudService {
             }
         });
     }
-    updateStock(id, dto) {
+    updateView(dto, id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { type, count, weight, weightUomId } = dto;
             try {
-                return yield this.prisma.stock.update({
+                const { type, coatingId, colorId, count, dimensionId, variantId, weight, weightUomId, } = dto;
+                return this.prisma.inventory_view.update({
                     where: {
                         id,
                     },
                     data: {
                         type,
-                        count,
+                        variantId,
+                        coatingId,
+                        colorId,
+                        dimensionId,
                         weight,
+                        count,
                         weightUomId,
                     },
                 });
@@ -4065,126 +4252,15 @@ let StockService = class StockService extends crud_service_1.CrudService {
         });
     }
 };
-StockService = __decorate([
+InventoryviewService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [prisma_service_1.PrismaService])
-], StockService);
-exports.StockService = StockService;
+], InventoryviewService);
+exports.InventoryviewService = InventoryviewService;
 
 
 /***/ }),
 /* 50 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.StockactionsService = void 0;
-const common_1 = __webpack_require__(4);
-const crud_service_1 = __webpack_require__(9);
-const error_functions_1 = __webpack_require__(13);
-const prisma_service_1 = __webpack_require__(10);
-let StockactionsService = class StockactionsService extends crud_service_1.CrudService {
-    constructor(prisma) {
-        super(prisma.stockActions);
-        this.prisma = prisma;
-    }
-    createActions(dto) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const { type, increaseInStock, decreaseInStock, } = dto;
-                return yield this.prisma.stockActions.create({
-                    data: {
-                        type: type,
-                        IncreaseInStock: increaseInStock &&
-                            (increaseInStock === null || increaseInStock === void 0 ? void 0 : increaseInStock.length) > 0
-                            ? {
-                                count: increaseInStock[0].count,
-                                weight: increaseInStock[0].weight,
-                                weightUom: increaseInStock[0]
-                                    .weightUom,
-                            }
-                            : undefined,
-                        DecreaseInStock: decreaseInStock &&
-                            (decreaseInStock === null || decreaseInStock === void 0 ? void 0 : decreaseInStock.length) > 0
-                            ? {
-                                count: decreaseInStock[0].count,
-                                weight: decreaseInStock[0].weight,
-                                weightUom: decreaseInStock[0]
-                                    .weightUom,
-                            }
-                            : undefined,
-                    },
-                });
-            }
-            catch (err) {
-                (0, error_functions_1.prismaError)(err);
-            }
-        });
-    }
-    updateActions(id, dto) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const { type, increaseInStock, decreaseInStock, } = dto;
-                return yield this.prisma.stockActions.update({
-                    where: {
-                        id,
-                    },
-                    data: {
-                        type: type,
-                        IncreaseInStock: increaseInStock &&
-                            (increaseInStock === null || increaseInStock === void 0 ? void 0 : increaseInStock.length) > 0
-                            ? {
-                                count: increaseInStock[0].count,
-                                weight: increaseInStock[0].weight,
-                                weightUom: increaseInStock[0]
-                                    .weightUom,
-                            }
-                            : undefined,
-                        DecreaseInStock: decreaseInStock &&
-                            (decreaseInStock === null || decreaseInStock === void 0 ? void 0 : decreaseInStock.length) > 0
-                            ? {
-                                count: decreaseInStock[0].count,
-                                weight: decreaseInStock[0].weight,
-                                weightUom: decreaseInStock[0]
-                                    .weightUom,
-                            }
-                            : undefined,
-                    },
-                });
-            }
-            catch (err) {
-                (0, error_functions_1.prismaError)(err);
-            }
-        });
-    }
-};
-StockactionsService = __decorate([
-    (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [prisma_service_1.PrismaService])
-], StockactionsService);
-exports.StockactionsService = StockactionsService;
-
-
-/***/ }),
-/* 51 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -4478,6 +4554,121 @@ exports.InventoryService = InventoryService;
 
 
 /***/ }),
+/* 51 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.StockService = void 0;
+const common_1 = __webpack_require__(4);
+const crud_service_1 = __webpack_require__(9);
+const error_functions_1 = __webpack_require__(13);
+const prisma_service_1 = __webpack_require__(10);
+let StockService = class StockService extends crud_service_1.CrudService {
+    constructor(prisma) {
+        super(prisma.stock);
+        this.prisma = prisma;
+    }
+    getStock() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield this.prisma.stock.findMany({
+                    orderBy: {
+                        updatedAt: 'desc',
+                    },
+                    include: {
+                        weightUom: true,
+                    },
+                });
+            }
+            catch (err) {
+                (0, error_functions_1.prismaError)(err);
+            }
+        });
+    }
+    getStockById(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                return yield this.prisma.stock.findUnique({
+                    where: {
+                        id,
+                    },
+                    include: {
+                        weightUom: true,
+                    },
+                });
+            }
+            catch (err) {
+                (0, error_functions_1.prismaError)(err);
+            }
+        });
+    }
+    createStock(dto) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { type, weight, count, weightUomId } = dto;
+                return yield this.prisma.stock.create({
+                    data: {
+                        type,
+                        weight,
+                        count,
+                        weightUomId,
+                    },
+                });
+            }
+            catch (err) {
+                (0, error_functions_1.prismaError)(err);
+            }
+        });
+    }
+    updateStock(id, dto) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { type, count, weight, weightUomId } = dto;
+            try {
+                return yield this.prisma.stock.update({
+                    where: {
+                        id,
+                    },
+                    data: {
+                        type,
+                        count,
+                        weight,
+                        weightUomId,
+                    },
+                });
+            }
+            catch (err) {
+                (0, error_functions_1.prismaError)(err);
+            }
+        });
+    }
+};
+StockService = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [prisma_service_1.PrismaService])
+], StockService);
+exports.StockService = StockService;
+
+
+/***/ }),
 /* 52 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
@@ -4501,72 +4692,41 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.InventoryviewService = void 0;
+exports.StockactionsService = void 0;
 const common_1 = __webpack_require__(4);
 const crud_service_1 = __webpack_require__(9);
 const error_functions_1 = __webpack_require__(13);
 const prisma_service_1 = __webpack_require__(10);
-let InventoryviewService = class InventoryviewService extends crud_service_1.CrudService {
+let StockactionsService = class StockactionsService extends crud_service_1.CrudService {
     constructor(prisma) {
-        super(prisma.inventory_view);
+        super(prisma.stockActions);
         this.prisma = prisma;
     }
-    getView() {
+    createActions(dto) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                return this.prisma.inventory_view.findMany({
-                    orderBy: {
-                        updatedAt: 'desc',
-                    },
-                    include: {
-                        coating: true,
-                        color: true,
-                        dimension: true,
-                        variant: true,
-                        weightUom: true,
-                    },
-                });
-            }
-            catch (err) {
-                (0, error_functions_1.prismaError)(err);
-            }
-        });
-    }
-    getViewById(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                return this.prisma.inventory_view.findUnique({
-                    where: {
-                        id,
-                    },
-                    include: {
-                        coating: true,
-                        color: true,
-                        dimension: true,
-                        variant: true,
-                        weightUom: true,
-                    },
-                });
-            }
-            catch (err) {
-                (0, error_functions_1.prismaError)(err);
-            }
-        });
-    }
-    createView(dto) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const { type, coatingId, colorId, count, dimensionId, variantId, weight, weightUomId, } = dto;
-                return this.prisma.inventory_view.create({
+                const { type, increaseInStock, decreaseInStock, } = dto;
+                return yield this.prisma.stockActions.create({
                     data: {
-                        type,
-                        variantId,
-                        coatingId,
-                        colorId,
-                        dimensionId,
-                        weight,
-                        count,
-                        weightUomId,
+                        type: type,
+                        IncreaseInStock: increaseInStock &&
+                            (increaseInStock === null || increaseInStock === void 0 ? void 0 : increaseInStock.length) > 0
+                            ? {
+                                count: increaseInStock[0].count,
+                                weight: increaseInStock[0].weight,
+                                weightUom: increaseInStock[0]
+                                    .weightUom,
+                            }
+                            : undefined,
+                        DecreaseInStock: decreaseInStock &&
+                            (decreaseInStock === null || decreaseInStock === void 0 ? void 0 : decreaseInStock.length) > 0
+                            ? {
+                                count: decreaseInStock[0].count,
+                                weight: decreaseInStock[0].weight,
+                                weightUom: decreaseInStock[0]
+                                    .weightUom,
+                            }
+                            : undefined,
                     },
                 });
             }
@@ -4575,23 +4735,34 @@ let InventoryviewService = class InventoryviewService extends crud_service_1.Cru
             }
         });
     }
-    updateView(dto, id) {
+    updateActions(id, dto) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const { type, coatingId, colorId, count, dimensionId, variantId, weight, weightUomId, } = dto;
-                return this.prisma.inventory_view.update({
+                const { type, increaseInStock, decreaseInStock, } = dto;
+                return yield this.prisma.stockActions.update({
                     where: {
                         id,
                     },
                     data: {
-                        type,
-                        variantId,
-                        coatingId,
-                        colorId,
-                        dimensionId,
-                        weight,
-                        count,
-                        weightUomId,
+                        type: type,
+                        IncreaseInStock: increaseInStock &&
+                            (increaseInStock === null || increaseInStock === void 0 ? void 0 : increaseInStock.length) > 0
+                            ? {
+                                count: increaseInStock[0].count,
+                                weight: increaseInStock[0].weight,
+                                weightUom: increaseInStock[0]
+                                    .weightUom,
+                            }
+                            : undefined,
+                        DecreaseInStock: decreaseInStock &&
+                            (decreaseInStock === null || decreaseInStock === void 0 ? void 0 : decreaseInStock.length) > 0
+                            ? {
+                                count: decreaseInStock[0].count,
+                                weight: decreaseInStock[0].weight,
+                                weightUom: decreaseInStock[0]
+                                    .weightUom,
+                            }
+                            : undefined,
                     },
                 });
             }
@@ -4601,245 +4772,15 @@ let InventoryviewService = class InventoryviewService extends crud_service_1.Cru
         });
     }
 };
-InventoryviewService = __decorate([
+StockactionsService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [prisma_service_1.PrismaService])
-], InventoryviewService);
-exports.InventoryviewService = InventoryviewService;
+], StockactionsService);
+exports.StockactionsService = StockactionsService;
 
 
 /***/ }),
 /* 53 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.InventoryDto = exports.ChangedMainStock = void 0;
-const openapi = __webpack_require__(6);
-const common_decorator_1 = __webpack_require__(22);
-class ChangedMainStock {
-    static _OPENAPI_METADATA_FACTORY() {
-        return { increaseInStock: { required: true, type: () => [Object] }, decreaseInStock: { required: true, type: () => [Object] } };
-    }
-}
-__decorate([
-    (0, common_decorator_1.ArrayOptionalValidator)(),
-    __metadata("design:type", Array)
-], ChangedMainStock.prototype, "increaseInStock", void 0);
-__decorate([
-    (0, common_decorator_1.ArrayOptionalValidator)(),
-    __metadata("design:type", Array)
-], ChangedMainStock.prototype, "decreaseInStock", void 0);
-exports.ChangedMainStock = ChangedMainStock;
-class InventoryDto {
-    static _OPENAPI_METADATA_FACTORY() {
-        return { inventory_view: { required: true, type: () => [String] }, rawStockChange: { required: true, type: () => [(__webpack_require__(53).ChangedMainStock)] }, garbageStockChange: { required: true, type: () => [(__webpack_require__(53).ChangedMainStock)] }, finishedStockChange: { required: true, type: () => [(__webpack_require__(53).ChangedMainStock)] } };
-    }
-}
-__decorate([
-    (0, common_decorator_1.ArrayValidator)(),
-    __metadata("design:type", Array)
-], InventoryDto.prototype, "inventory_view", void 0);
-__decorate([
-    (0, common_decorator_1.ArrayOptionalValidator)(),
-    __metadata("design:type", Array)
-], InventoryDto.prototype, "rawStockChange", void 0);
-__decorate([
-    (0, common_decorator_1.ArrayOptionalValidator)(),
-    __metadata("design:type", Array)
-], InventoryDto.prototype, "garbageStockChange", void 0);
-__decorate([
-    (0, common_decorator_1.ArrayOptionalValidator)(),
-    __metadata("design:type", Array)
-], InventoryDto.prototype, "finishedStockChange", void 0);
-exports.InventoryDto = InventoryDto;
-
-
-/***/ }),
-/* 54 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.InventoryViewDto = void 0;
-const openapi = __webpack_require__(6);
-const swagger_1 = __webpack_require__(6);
-const client_1 = __webpack_require__(12);
-const class_validator_1 = __webpack_require__(21);
-const common_decorator_1 = __webpack_require__(22);
-class InventoryViewDto {
-    static _OPENAPI_METADATA_FACTORY() {
-        return { type: { required: true, type: () => Object }, variantId: { required: true, type: () => String }, colorId: { required: true, type: () => String }, coatingId: { required: true, type: () => String }, dimensionId: { required: true, type: () => String }, weight: { required: true, type: () => Number }, weightUomId: { required: true, type: () => String }, count: { required: true, type: () => Number } };
-    }
-}
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    (0, class_validator_1.IsEnum)(client_1.InventoryType),
-    __metadata("design:type", String)
-], InventoryViewDto.prototype, "type", void 0);
-__decorate([
-    (0, common_decorator_1.StringValidator)(),
-    __metadata("design:type", String)
-], InventoryViewDto.prototype, "variantId", void 0);
-__decorate([
-    (0, common_decorator_1.StringValidator)(),
-    __metadata("design:type", String)
-], InventoryViewDto.prototype, "colorId", void 0);
-__decorate([
-    (0, common_decorator_1.StringOptionalValidator)(),
-    __metadata("design:type", String)
-], InventoryViewDto.prototype, "coatingId", void 0);
-__decorate([
-    (0, common_decorator_1.StringValidator)(),
-    __metadata("design:type", String)
-], InventoryViewDto.prototype, "dimensionId", void 0);
-__decorate([
-    (0, common_decorator_1.NumberOptionalValidator)(),
-    __metadata("design:type", Number)
-], InventoryViewDto.prototype, "weight", void 0);
-__decorate([
-    (0, common_decorator_1.StringOptionalValidator)(),
-    __metadata("design:type", String)
-], InventoryViewDto.prototype, "weightUomId", void 0);
-__decorate([
-    (0, common_decorator_1.NumberValidator)(),
-    (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", Number)
-], InventoryViewDto.prototype, "count", void 0);
-exports.InventoryViewDto = InventoryViewDto;
-
-
-/***/ }),
-/* 55 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.StockDto = void 0;
-const openapi = __webpack_require__(6);
-const client_1 = __webpack_require__(12);
-const class_validator_1 = __webpack_require__(21);
-const common_decorator_1 = __webpack_require__(22);
-class StockDto {
-    static _OPENAPI_METADATA_FACTORY() {
-        return { type: { required: true, type: () => Object }, weight: { required: true, type: () => Number }, weightUomId: { required: true, type: () => String }, count: { required: true, type: () => Number } };
-    }
-}
-__decorate([
-    (0, common_decorator_1.StringValidator)(),
-    (0, class_validator_1.IsEnum)(client_1.InventoryType),
-    __metadata("design:type", String)
-], StockDto.prototype, "type", void 0);
-__decorate([
-    (0, common_decorator_1.NumberOptionalValidator)(),
-    __metadata("design:type", Number)
-], StockDto.prototype, "weight", void 0);
-__decorate([
-    (0, common_decorator_1.StringOptionalValidator)(),
-    __metadata("design:type", String)
-], StockDto.prototype, "weightUomId", void 0);
-__decorate([
-    (0, common_decorator_1.NumberValidator)(),
-    (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", Number)
-], StockDto.prototype, "count", void 0);
-exports.StockDto = StockDto;
-
-
-/***/ }),
-/* 56 */
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.StockActionsDto = exports.ChangedStock = void 0;
-const openapi = __webpack_require__(6);
-const swagger_1 = __webpack_require__(6);
-const client_1 = __webpack_require__(12);
-const class_validator_1 = __webpack_require__(21);
-const common_decorator_1 = __webpack_require__(22);
-class ChangedStock {
-    static _OPENAPI_METADATA_FACTORY() {
-        return { weight: { required: true, type: () => Number }, weightUom: { required: true, type: () => String }, count: { required: true, type: () => Number } };
-    }
-}
-__decorate([
-    (0, common_decorator_1.NumberOptionalValidator)(),
-    __metadata("design:type", Number)
-], ChangedStock.prototype, "weight", void 0);
-__decorate([
-    (0, common_decorator_1.StringOptionalValidator)(),
-    __metadata("design:type", String)
-], ChangedStock.prototype, "weightUom", void 0);
-__decorate([
-    (0, common_decorator_1.NumberValidator)(),
-    (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", Number)
-], ChangedStock.prototype, "count", void 0);
-exports.ChangedStock = ChangedStock;
-class StockActionsDto {
-    static _OPENAPI_METADATA_FACTORY() {
-        return { type: { required: true, type: () => Object }, increaseInStock: { required: true, type: () => [(__webpack_require__(56).ChangedStock)] }, decreaseInStock: { required: true, type: () => [(__webpack_require__(56).ChangedStock)] } };
-    }
-}
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    (0, class_validator_1.IsEnum)(client_1.InventoryType),
-    __metadata("design:type", String)
-], StockActionsDto.prototype, "type", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsArray)(),
-    __metadata("design:type", Array)
-], StockActionsDto.prototype, "increaseInStock", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsArray)(),
-    __metadata("design:type", Array)
-], StockActionsDto.prototype, "decreaseInStock", void 0);
-exports.StockActionsDto = StockActionsDto;
-
-
-/***/ }),
-/* 57 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -4890,7 +4831,7 @@ exports.CustomerDto = CustomerDto;
 
 
 /***/ }),
-/* 58 */
+/* 54 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -4997,6 +4938,65 @@ CustomerService = __decorate([
     __metadata("design:paramtypes", [prisma_service_1.PrismaService])
 ], CustomerService);
 exports.CustomerService = CustomerService;
+
+
+/***/ }),
+/* 55 */
+/***/ ((module) => {
+
+module.exports = require("@nestjs/jwt");
+
+/***/ }),
+/* 56 */
+/***/ ((module) => {
+
+module.exports = require("reflect-metadata");
+
+/***/ }),
+/* 57 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.createDocument = void 0;
+const swagger_1 = __webpack_require__(6);
+const swagger_config_1 = __webpack_require__(58);
+function createDocument(app) {
+    const builder = new swagger_1.DocumentBuilder()
+        .addSecurity('basic', {
+        type: 'http',
+        scheme: 'basic',
+    })
+        .setTitle(swagger_config_1.SWAGGER_CONFIG.title)
+        .setDescription(swagger_config_1.SWAGGER_CONFIG.description)
+        .setContact(process.env.SWAGGER_CONTACT_NAME, process.env.SWAGGER_CONTACT_URL, process.env.SWAGGER_CONTACT_EMAIL)
+        .setExternalDoc('Project on Github', process.env.SWAGGER_PROJECT_DETAILS)
+        .addBearerAuth({
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+    }, 'access-token')
+        .setVersion(swagger_config_1.SWAGGER_CONFIG.version)
+        .addServer(process.env.SWAGGER_LOCAL_ENDPOINT, 'local url')
+        .addServer(process.env.SWAGGER_STAG_ENDPOINT, 'stag url');
+    const options = builder.build();
+    return swagger_1.SwaggerModule.createDocument(app, options);
+}
+exports.createDocument = createDocument;
+
+
+/***/ }),
+/* 58 */
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.SWAGGER_CONFIG = void 0;
+exports.SWAGGER_CONFIG = {
+    title: 'ERP-Nestjs-API',
+    description: 'Bitontree-ERP',
+    version: '1.0',
+};
 
 
 /***/ })

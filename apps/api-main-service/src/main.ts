@@ -43,6 +43,7 @@ dotenv.config();
 (async () => {
   const app = await NestFactory.create(
     ApiMainServiceModule,
+    { cors: true }
   );
   SwaggerModule.setup(
     'main/api',
