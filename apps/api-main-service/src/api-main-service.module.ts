@@ -7,6 +7,21 @@ import { PrismaService } from "shared/prisma/prisma.service";
 import { MailerModule } from "@nestjs-modules/mailer";
 import { JwtModule } from "@nestjs/jwt";
 import { ConfigService } from "@nestjs/config";
+import { CompanyService } from "apps/company/src/company.service";
+import { SubcompanyService } from "apps/company/src/subcompany/subcompany.service";
+import { ColorService } from "apps/product/src/color/color.service";
+import { ProductService } from "apps/product/src/product.service";
+import { ProductdimensionService } from "apps/product/src/productdimension/productdimension.service";
+import { ProducttypeService } from "apps/product/src/producttype/producttype.service";
+import { ProductvariantService } from "apps/product/src/productvariant/productvariant.service";
+import { PurchaseorderService } from "apps/product/src/purchaseorder/purchaseorder.service";
+import { RateService } from "apps/product/src/rate/rate.service";
+import { UomService } from "apps/product/src/uom/uom.service";
+import { StockService } from "apps/inventory/src/stock/stock.service";
+import { StockactionsService } from "apps/inventory/src/stockactions/stockactions.service";
+import { InventoryService } from "apps/inventory/src/inventory.service";
+import { InventoryviewService } from "apps/inventory/src/inventoryview/inventoryview.service";
+import { CustomerService } from "apps/customer/src/customer.service";
 
 @Module({
   imports: [
@@ -36,6 +51,21 @@ import { ConfigService } from "@nestjs/config";
     AuthService,
     PrismaService,
     ConfigService,
+    CompanyService,
+    SubcompanyService,
+    ColorService,
+    ProductdimensionService,
+    ProductvariantService,
+    PurchaseorderService,
+    ProducttypeService,
+    RateService,
+    UomService,
+    ProductService,
+    StockService,
+    StockactionsService,
+    InventoryService,
+    InventoryviewService,
+    CustomerService,
   ],
 })
 export class ApiMainServiceModule {}
