@@ -1,0 +1,284 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 String    @id @default(uuid())
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  email              String    @unique
+  password           String
+  companyId          String?
+  verified           Boolean?  @default(false)
+  passwordResetAt    DateTime?
+  passwordResetToken String?   @unique
+  role               Role      @default(BranchUser)
+  modules            Module[]
+  products           Product[]
+  company            Company?  @relation(fields: [companyId], references: [id], onDelete: Cascade)
+}
+
+model Module {
+  id        String     @id @default(uuid())
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  controls  String[]
+  userId    String
+  name      ModuleName
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Product {
+  id             String           @id @default(uuid())
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  count          Int
+  weight         Float
+  weightUom      Uom              @relation(fields: [weightUomId], references: [id])
+  weightUomId    String
+  rateId         String
+  userId         String
+  rate           Rate             @relation(fields: [rateId], references: [id])
+  user           User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Purchase_order Purchase_order[] @relation("ProductToPurchase_order")
+}
+
+model Product_variant {
+  id             String           @id @default(uuid())
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  sectionName    String
+  sectionNumber  Int              @unique
+  width          Float?
+  height         Float?
+  thickness      Float?
+  outerDiameter  Float?
+  weight         Float
+  weightUom      Uom              @relation(fields: [weightUomId], references: [id])
+  weightUomId    String
+  inventory_view Inventory_view[]
+  rate           Rate[]
+}
+
+model Color {
+  id             String           @id @default(uuid())
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  color          String           @unique
+  inventory_view Inventory_view[]
+  rate           Rate[]
+}
+
+model Product_type {
+  id             String           @id @default(uuid())
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  type           ProductType
+  subtype        ProductSubType
+  inventory_view Inventory_view[]
+  rate           Rate[]
+}
+
+model Product_dimension {
+  id             String           @id @default(uuid())
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  height         Float            @unique
+  uomId          String
+  inventory_view Inventory_view[]
+  uom            Uom              @relation(fields: [uomId], references: [id])
+  rate           Rate[]
+}
+
+model Uom {
+  id                 String              @id @default(uuid())
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  type               String              @unique
+  inventory_view     Inventory_view[]
+  Product            Product[]
+  product_dimensions Product_dimension[]
+  stock              Stock[]
+  product_variant    Product_variant[]
+}
+
+model Rate {
+  id          String            @id @default(uuid())
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  rate        Float
+  variantId   String
+  colorId     String
+  typeId      String
+  dimensionId String
+  product     Product[]
+  color       Color             @relation(fields: [colorId], references: [id])
+  dimension   Product_dimension @relation(fields: [dimensionId], references: [id])
+  type        Product_type      @relation(fields: [typeId], references: [id])
+  variant     Product_variant   @relation(fields: [variantId], references: [id], onDelete: Cascade)
+}
+
+model Purchase_order {
+  id               String    @id @default(uuid())
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  challan_number   Int       @unique
+  order_number     Int       @unique
+  customer_info    Customer  @relation(fields: [customerId], references: [id])
+  customerId       String
+  issued_date      DateTime  @default(now())
+  net_weight       Float
+  tax              Float?
+  gross_amount     Float
+  net_amount       Float?
+  final_amount     Float
+  coating_amount   Float?
+  coating_discount Float?
+  cost_per_kg      Float
+  has_raw_material Boolean
+  status           POStatus  @default(initiated)
+  products         Product[] @relation("ProductToPurchase_order")
+}
+
+model Company {
+  id          String        @id @default(uuid())
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  name        String        @unique
+  user        User[]
+  sub_company Sub_company[] @relation("CompanyToSub_company")
+}
+
+model Sub_company {
+  id          String        @id @default(uuid())
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  name        String        @unique
+  company     Company[]     @relation("CompanyToSub_company")
+}
+
+model Inventory_view {
+  id          String            @id @default(uuid())
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  type        InventoryType
+  variantId   String
+  colorId     String
+  coatingId   String?
+  dimensionId String
+  weight      Float?
+  count       Int?
+  weightUomId String?
+  inventory   Inventory[]
+  coating     Product_type?     @relation(fields: [coatingId], references: [id])
+  color       Color             @relation(fields: [colorId], references: [id])
+  dimension   Product_dimension @relation(fields: [dimensionId], references: [id])
+  variant     Product_variant   @relation(fields: [variantId], references: [id])
+  weightUom   Uom?              @relation(fields: [weightUomId], references: [id])
+}
+
+model Inventory {
+  id                          String           @id @default(uuid())
+  createdAt                   DateTime         @default(now())
+  updatedAt                   DateTime         @updatedAt
+  inventory_view              Inventory_view[]
+  opening_raw                 Json?
+  opening_garbage             Json?
+  opening_finished            Json?
+  rawChange_after_action      StockActions?    @relation("rawAction", fields: [rawActionId], references: [id])
+  rawActionId                 String?
+  garbageChange_after_action  StockActions?    @relation("garbageAction", fields: [garbageActionId], references: [id])
+  garbageActionId             String?
+  finishedChange_after_action StockActions?    @relation("finishedAction", fields: [finishedActionId], references: [id])
+  finishedActionId            String
+  rawStock_after_action       Stock            @relation("raw", fields: [rawStockId], references: [id])
+  rawStockId                  String
+  garbageStock_after_action   Stock            @relation("garbage", fields: [garbageStockId], references: [id])
+  garbageStockId              String
+  finishedStock_after_action  Stock            @relation("finished", fields: [finishedStockId], references: [id])
+  finishedStockId             String
+}
+
+model Stock {
+  id          String        @id @default(uuid())
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  type        InventoryType @unique @default(raw)
+  count       Int?
+  weight      Float?
+  weightUomId String?
+  finished    Inventory[]   @relation("finished")
+  garbage     Inventory[]   @relation("garbage")
+  raw         Inventory[]   @relation("raw")
+  weightUom   Uom?          @relation(fields: [weightUomId], references: [id])
+}
+
+model StockActions {
+  id              String        @id @default(uuid())
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  type            InventoryType
+  IncreaseInStock Json?
+  DecreaseInStock Json?
+  rawAction       Inventory[]   @relation("rawAction")
+  garbageAction   Inventory[]   @relation("garbageAction")
+  finishedAction  Inventory[]   @relation("finishedAction")
+}
+
+model Customer {
+  id             String           @id @default(uuid())
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  name           String           @unique
+  email          String?
+  phone          String?
+  credit_note    String?
+  purchase_order Purchase_order[]
+}
+
+enum ProductType {
+  Anodized
+  Powdered
+}
+
+enum ProductSubType {
+  Plain
+  Normal
+  Standard
+  Premium
+}
+
+enum ModuleName {
+  User
+  Company
+  Products
+  PurchaseOrders
+  Inventory
+  Customers
+}
+
+enum Role {
+  SuperAdmin
+  Admin
+  BranchUser
+  FactoryUser
+  Labour
+}
+
+enum InventoryType {
+  raw
+  garbage
+  finished
+}
+
+enum POStatus {
+  initiated
+  processed
+  finished
+}

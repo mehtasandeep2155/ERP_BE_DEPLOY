@@ -1,0 +1,93 @@
+# File: apps/api-main-service/serverless.yml
+service: api-main-service
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  endpointType: REGIONAL
+  ecr:
+    images:
+      appimage:
+        path: ./
+
+package:
+  individually: true
+  patterns:
+    - '!node_modules/.prisma/client/libquery_engine-*'
+    - 'node_modules/.prisma/client/libquery_engine-linux-arm64-*'
+    - '!node_modules/prisma/libquery_engine-*'
+    - '!node_modules/@prisma/engines/**'
+
+functions:
+  user:
+    image:
+      name: appimage
+      command:
+        - dist/apps/user/main.handler
+      entryPoint:
+        - '/lambda-entrypoint.sh'
+    # handler: dist/apps/user/main.handler
+    events:
+      - http:
+          method: any
+          path: /user/{any+}
+  company:
+    image:
+      name: appimage
+      command:
+        - dist/apps/company/main.handler
+      entryPoint:
+        - '/lambda-entrypoint.sh'
+    # handler: dist/apps/company/main.handler
+    events:
+      - http:
+          method: ANY
+          path: /company/{any+}
+  product:
+    image:
+      name: appimage
+      command:
+        - dist/apps/product/main.handler
+      entryPoint:
+        - '/lambda-entrypoint.sh'
+    # handler: dist/apps/product/main.handler
+    events:
+      - http:
+          method: any
+          path: /product/{any+}
+  inventory:
+    image:
+      name: appimage
+      command:
+        - dist/apps/inventory/main.handler
+      entryPoint:
+        - '/lambda-entrypoint.sh'
+    # handler: dist/apps/inventory/main.handler
+    events:
+      - http:
+          method: any
+          path: /inventory/{any+}
+  customer:
+    image:
+      name: appimage
+      command:
+        - dist/apps/customer/main.handler
+      entryPoint:
+        - '/lambda-entrypoint.sh'
+    # handler: dist/apps/customer/main.handler
+    events:
+      - http:
+          method: any
+          path: /customer/{any+}
+# guide to serverless configuration
+
+# sls deploy -
+# -- comment the handler for each lambda function & run following commands -
+# yarn build, sls deploy
+
+# sls offline -
+# -- uncomment the handler for each lambda function & run following command -
+# yarn start:sls
